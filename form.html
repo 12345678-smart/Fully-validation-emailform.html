@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validation</title>
+    <style>
+        body{
+            background-image: url(image18.jpg);
+            background-size: cover;
+        }
+      form{
+        margin-left: 28rem;
+        background-color: rgb(0, 0, 0, 0.2);
+        height:40.5rem;
+        width: 30rem;
+        position: absolute;
+        border-radius: 100px;
+       font-family:  'Montserrat', sans-serif;
+        }
+      input{
+          width: 20rem;
+          height: 02.7rem;
+          background-color: rgb(0, 0, 0, 0.3);
+          border-color: aqua;
+          outline: none;
+          border-radius: 3rem;
+          color: aqua;
+          font-size: 15px;
+       font-family:  'Montserrat', sans-serif;
+      }
+      button[id=submit]{
+          width: 15rem;
+          height: 3rem;
+          background-color: rgb(0, 0, 0, 0.3);
+          border-color: aqua;
+          outline: none;
+          border-radius: 3rem;
+          color: rgb(162, 224, 243);
+          cursor: pointer;
+      }
+      label{
+       color: aqua;
+       font-family:  'Montserrat', sans-serif;
+      }
+      ::-webkit-input-placeholder{
+          color: aqua;
+          font-size: 15px;
+          text-align: left;
+       font-family:  'Montserrat', sans-serif;
+
+      }
+
+      input[class=form]:focus{
+          background-color: #0000001a;
+          border-color: #f8f9fa;
+        border-width: 2px;
+          width: 25rem;
+          font-family:  'Montserrat', sans-serif;
+          
+      }
+      button[id=submit]:focus{
+          background-color: rgb(0, 0, 0, 0.1);
+          border-color: #87aaeb;
+          width: 20rem;
+      }
+      #first{
+          background-image: url(05.png);
+          background-size: 3rem;
+          background-repeat: no-repeat;
+          background-position: right;
+      }
+      #email{
+          background-image: url(03.png);
+          background-size: 3rem;
+          background-repeat: no-repeat;
+          background-position: right;
+      }      
+       #pass{
+          background-image: url(04.png);
+          background-size: 3rem;
+          background-repeat: no-repeat;
+          background-position: right;
+      }     
+       #cpass{
+          background-image: url(04.png);
+          background-size: 3rem;
+          background-repeat: no-repeat;
+          background-position: right;
+      }   
+       #mobile{
+          background-image: url(06.png);
+          background-size: 3rem;
+          background-repeat: no-repeat;
+          background-position: right;
+      }
+      span{
+          color: #e1eb87;
+          font-size: 14px;
+      }
+
+    </style>
+</head>
+<body>
+    <center>
+    <form id="okay" onsubmit="return validation()">
+        <div id="form">
+         <img src="avatar2.png" width="130px" id="av"><br>
+        <div id="user">
+        <label for="user">Username</label><br>
+        <input class="form" type="text" id="first" placeholder="Enter your full name" autocomplete="off"><br>
+        <span id="no"></span><br>
+        </div>
+        <div id="nocan">
+        <label for="user">Email Address</label><br>
+        <input class="form" type="text" id="email" placeholder="Enter your email address" autocomplete="off"><br>
+        <span id="yes"></span><br>
+        </div>
+        <div id="let">
+        <label for="user">Password</label><br>
+        <input class="form" type="password" id="pass" placeholder="Enter your password"  autocomplete="off"><br>
+        <span id="how"></span><br>
+        </div>
+        <div id="see">
+        <label for="user">Confirm Password</label><br>
+        <input class="form" type="password" id="cpass" placeholder="Enter your confirm password" autocomplete="off"><br>
+        <span id="fine"></span><br>
+        </div>
+        <div id="set">
+        <label for="user">Phone Number</label><br>
+        <input class="form" type="text" id="mobile" placeholder="Enter your phone number" autocomplete="off"><br>
+        <span id="phone"></span><br><br>
+        </div>
+        <button id="submit">Submit</button>
+        </div>
+        </center>
+    </form>
+    <script type="text/javascript">
+
+   function validation() {
+       var first = document.getElementById('first').value;
+       var email = document.getElementById('email').value;
+       var pass = document.getElementById('pass').value;
+       var cpass = document.getElementById('cpass').value;
+       var mobile = document.getElementById('mobile').value;
+
+
+       if (first==""){
+    document.getElementById('no').innerHTML="! Please fill the full name field";
+        return false;
+}
+  
+  
+  if((first.length <= 8) || (first.length>20)){
+     document.getElementById('no').innerHTML="! First name field contain atleast than 8 characters";
+        return false;
+ }
+
+    if(!isNaN(first)){
+    document.getElementById('no').innerHTML="! First name contain only characters";
+        return false;
+   }
+
+  
+
+    if (email==""){
+ document.getElementById('yes').innerHTML="! Please fill the email address field";
+        return false;
+   }
+  if(email.indexOf('@') <= 7){
+    document.getElementById('yes').innerHTML="! Invalid email address";
+        return false;
+   }
+    if(email.charAt(email.length-4)!='.'){
+    document.getElementById('yes').innerHTML="! Please write valid email address";
+        return false;
+ }
+ 
+  if(email.indexOf('gmail')<!'.'){
+    document.getElementById('yes').innerHTML="! Please write correct email address ";
+        return false;
+ }
+
+
+   
+   if (pass==""){
+        document.getElementById('how').innerHTML="! Please fill the password field";
+        return false;
+    }
+ if (isFinite(pass)) {
+    document.getElementById('how').innerHTML="! Password does not support space";
+        return false;
+ }
+    
+    if((pass.length <=7) || (pass.length>20)){
+    document.getElementById('how').innerHTML="! Password contain atleast 8 character";
+        return false;
+   }
+ 
+
+
+   
+    if (cpass==""){
+        document.getElementById('fine').innerHTML="! Please fill the confirm password field";
+        return false;
+    }
+  
+
+    if(pass!=cpass){
+        document.getElementById('fine').innerHTML="! Password is not matching";
+        return false;   
+    }
+
+    if(mobile==""){
+        document.getElementById('phone').innerHTML="! Please fill the phone number field ";
+        return false;  
+    }
+
+
+    if(isNaN(mobile)){
+        document.getElementById('phone').innerHTML="!  Phone number contain only digits ";
+        return false;   
+    }
+
+    if((mobile.length<=9) || (mobile.length>10)){
+        document.getElementById('phone').innerHTML="! Phone number contain only 10 digits ";
+        return false;  
+    } 
+    if((mobile.charAt(0) !=9) && (mobile.charAt(0) !=8) && (mobile.charAt(0) !=7) && (mobile.charAt(0) !=6)){
+        document.getElementById('phone').innerHTML="! Invalid phone number ";
+        return false;  
+    }
+    
+   }
+
+
+    </script>
+</body>
+</html>
