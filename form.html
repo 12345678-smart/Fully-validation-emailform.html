@@ -180,6 +180,10 @@
     document.getElementById('yes').innerHTML="! Please write correct email address ";
         return false;
  }
+ if(/\s/.test(email)) {
+    document.getElementById('yes').innerHTML="! Space are not allowed ";
+       return false;
+      }
 
 
    
